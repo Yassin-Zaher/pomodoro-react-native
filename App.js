@@ -1,17 +1,23 @@
-import { StyleSheet, Text, Platform, StatusBar } from "react-native";
-
+import { StyleSheet, Text, Platform, View, StatusBar } from "react-native";
 import SafeAreaView from "react-native-safe-area-view";
-
-import React from "react";
-
+import React, { useState } from "react";
 import Focus from "./features/Focus";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function App() {
+  const [currentSubject, setCurrentSubject] = useState(null);
   return (
     <SafeAreaProvider>
       <SafeAreaView style={styles.container}>
-        <Focus />
+        {!currentSubject ? (
+          <Focus addSubject={setCurrentSubject} />
+        ) : (
+          <View>
+            <Text style={{ color: "white" }}>
+              The timer page for {currentSubject}
+            </Text>
+          </View>
+        )}
       </SafeAreaView>
     </SafeAreaProvider>
   );
