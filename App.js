@@ -1,20 +1,19 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  Platform,
-  StatusBar,
-} from "react-native";
+import { StyleSheet, Text, Platform, StatusBar } from "react-native";
+
+import SafeAreaView from "react-native-safe-area-view";
+
 import React from "react";
 
 import Focus from "./features/Focus";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Focus />
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <Focus />
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
